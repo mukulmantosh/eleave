@@ -1,13 +1,13 @@
 
-<?php 
-require 'connection.php'; 
+<?php
+require 'connection.php';
 
 
-session_start();  
+session_start();
 session_regenerate_id(true);
-if (isset($_POST['email'])) 
+if (isset($_POST['email']))
 {
-	
+
 	$email = strip_tags($_POST['email']);
 	$password = strip_tags($_POST['password']);
 
@@ -23,7 +23,7 @@ if (isset($_POST['email']))
 	$type= $user["type"];
 	// IF USERNAME AND PASSWORD MATCHES THEN THE IF STATEMENT GETS EXECUTED//
 	if($res==1)
-	
+
 	{
 		// SECOND NESTED-IF ELSE IS USED TO CHECK WHETHER DESIGNATION E.G. chairman,hod,faculty etc. MATCHES....//
 		if($type=='chairman')
@@ -34,7 +34,7 @@ if (isset($_POST['email']))
 			$_SESSION['usertypechairman']= $type;
 			header("Refresh: 0; url=chairman/index.php");
 			die();
-			
+
 		}
 		elseif($type=='admin')
 		{
@@ -83,14 +83,14 @@ if (isset($_POST['email']))
 		}
 		else
 		{
-			
+
 		 	// IF STATEMENT CONDITION FAILS THEN REDIRECT TO INDEX PAGE//
 			header("Refresh:0; url=index.php");
 			die();
 		}
-		
+
 	}
-	
+
 	else
 	{
 		// IF STATEMENT CONDITION FAILS THEN REDIRECT TO INDEX PAGE//
@@ -105,40 +105,40 @@ if (isset($_POST['email']))
 		header('refresh:0;url=admin/index.php');
 		die();
 	}
-	
+
 	elseif(isset($_SESSION['sessuserchairman']) && isset($_SESSION['sessionpwdchairman']) && isset($_SESSION['usertypechairman']))
 	{
 		header('refresh:0;url=chairman/index.php');
 		die();
 	}
-	
+
 	elseif(isset($_SESSION['sessuserhod']) && isset($_SESSION['sessionpwdhod']) && isset($_SESSION['usertypehod']))
 	{
 		header('refresh:0;url=hod/index.php');
 		die();
 	}
-	
+
 	elseif(isset($_SESSION['sessuserfaculty']) && isset($_SESSION['sessionpwdfaculty']) && isset($_SESSION['usertypefaculty']))
 	{
 		header('refresh:0;url=faculty/index.php');
 		die();
 	}
-	
+
 	elseif(isset($_SESSION['sessuserprincipal']) && isset($_SESSION['sessionpwdprincipal']) && isset($_SESSION['usertypeprincipal']))
 	{
 		header('refresh:0;url=principal/index.php');
 		die();
 	}
-	
+
 	elseif(isset($_SESSION['sessuserdirector']) && isset($_SESSION['sessionpwddirector']) && isset($_SESSION['usertypedirector']))
 	{
 		header('refresh:0;url=director/index.php');
 		die();
 	}
-	
-	
-	
-	
+
+
+
+
 
 
 ?>
@@ -146,7 +146,7 @@ if (isset($_POST['email']))
 <html>
 <head>
 <meta charset="utf-8">
-<title>E-LEAVE MANAGEMENT SYSTEM</title>
+<title>E-Leave Management System</title>
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/bootstrap-theme.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
@@ -164,9 +164,9 @@ if (isset($_POST['email']))
 <style>
 body
 {
-	
-	
-	background:url(img/backgroundimage.jpg) no-repeat center center fixed; 
+
+
+	background:url(img/backgroundimage.jpg) no-repeat center center fixed;
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
@@ -191,16 +191,16 @@ $(function () {
                 <form class="form-signin" action="" method="post">
                 <input type="text" class="form-control" placeholder="Email" name="email"required autofocus autocomplete="off">
                 <input type="password" class="form-control" placeholder="Password" name="password" required autocomplete="off">
-            
+
                 <br>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Sign in</button>
-                
+
                 </form>
             </div>
-          
-           
+
+
         </div>
     </div>
 </div>
